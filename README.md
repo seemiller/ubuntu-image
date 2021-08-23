@@ -5,19 +5,19 @@ Just a pre-baked ubuntu image with some packages installed for trying things out
 Build it:
 
 ```shell
-docker build --tag seemiller/ubuntu .
+docker build --tag seemiller/ubuntu:0.0.2 .
 ```
 
 Rebuild at a stage
 
 ```shell
-docker build --no-cache --target base --tag seemiller/ubuntu .
+docker build --no-cache --target base --tag seemiller/ubuntu:0.0.2 .
 ```
 
 Push to DockerHub:
 
 ```shell
-docker push seemiller/ubuntu
+docker push seemiller/ubuntu:0.0.2
 ```
 
 Run it locally:
@@ -37,13 +37,16 @@ metadata:
     app: ubuntu
 spec:
   containers:
-  - image: seemiller/ubuntu
-#    command:
-#    - "sleep"
-#    - "604800"
+  - image: seemiller/ubuntu:0.0.2
     imagePullPolicy: IfNotPresent
     name: ubuntu
   restartPolicy: Always
 EOF
+```
+
+Exec to the cluster
+
+```shell
+kubectl exec -it ubuntu -- /bin/bash
 ```
 

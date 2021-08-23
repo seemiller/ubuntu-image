@@ -4,17 +4,20 @@ RUN apt update \
 
 FROM base AS packages
 RUN apt update \
-    && apt install -y \
+    && DEBIAN_FRONTEND=noninteractive apt install -y \
         apt-transport-https \
         build-essential \
         ca-certificates \
         curl \
+        dnsutils \
         gcc \
         git \
+        iputils-ping \
         jq \
         libdigest-sha-perl \
         make \
         net-tools \
+        inetutils-traceroute \
         vim \
         wget \
         && rm -rf /var/lib/apt/lists/*
