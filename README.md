@@ -27,6 +27,15 @@ docker run --interactive --tty --entrypoint /bin/bash seemiller/ubuntu
 ```
 
 Deploy to a cluster
+
+The short and quick way
+
+```shell
+kubectl run ubuntu --image seemiller/ubuntu:0.0.2
+```
+
+Or the long way
+
 ```shell
 cat <<EOF | kubectl apply --filename -
 apiVersion: v1
